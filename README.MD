@@ -1,12 +1,12 @@
-Full Text Search Light is a pure JS full text search engine with an **ultrafast** search and the following commands:
+Full Text Search Light NoFS is a pure JS full text search engine with an **ultrafast** search and the following commands:
 
   - Add
   - Search
   - Remove
-  - Save to file
-  - Load from file
 
 You can add every kind of data, also complex objects.
+
+It's a fork of full-text-search-light with load/save features removed, so now it can be easily used in browser environment.
 
 ## Install
 ### From NPM
@@ -103,40 +103,6 @@ var result = search.search('pau');
 // result: ['Paul']
 ```
 
-### Save and Load
-```js
-var fulltextsearchlight = require('full-text-search-light-nofs');
-var search = new fulltextsearchlight();
-
-// Add
-search.add('Hello World');
-
-// Save current db
-search.save('search.json', function(error){
-
-    // Load db
-    fulltextsearchlight.load('search.json', function(error, search_loaded){
-        var results = search_loaded.search('World');
-    });
-});
-```
-
-### Save and Load (Sync)
-```js
-var fulltextsearchlight = require('full-text-search-light-nofs');
-var search = new fulltextsearchlight();
-
-// Add
-search.add('Hello World');
-
-// Save current db
-search.saveSync('search.json');
-
-// Load db
-var search_loaded = fulltextsearchlight.loadSync('search.json');
-var results = search_loaded.search('World');
-```
-
 ## Functions
 
 This are all functions that can be used.
@@ -157,12 +123,6 @@ If you add numbers or booleans to the search they will be converted to strings.
 
 ### drop
 - ```search.drop()``` - Drops the search database and resets all data. The configuration is kept.
-
-### saveSync
-- ```search.saveSync('path/to/file.json')``` - Save current search db to a json file.
-
-### loadSync
-- ```fulltextsearchlight.loadSync('path/to/file.json')``` - Load a search from a file;
 
 ## Run tests
 
