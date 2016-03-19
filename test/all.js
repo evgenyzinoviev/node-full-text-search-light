@@ -1,70 +1,7 @@
 var assert = require("assert");
-var fs = require('fs');
 var text_search_light = require('../index.js');
 
 describe('full-text-search-light test', function () {
-
-
-    describe('save and load', function () {
-
-        it('saveSync and loadSync the current full text search', function () {
-            var path = 'fullextsearch.json';
-            var text_search = new text_search_light();
-            text_search.add('Peter');
-            text_search.add('Paul');
-            text_search.add('Maria');
-            text_search.saveSync(path);
-
-            // File exists now
-            assert(fs.existsSync(path) === true);
-
-            // Same data structure
-            var text_search2 = text_search_light.loadSync(path);
-
-            assert.deepEqual(text_search, text_search2);
-
-            // Check functions
-            assert.deepEqual(text_search.search('P'), ['Peter', 'Paul']);
-            assert.deepEqual(text_search.search('P'), text_search2.search('P'));
-
-            fs.unlinkSync(path);
-        });
-
-
-        it('save and load the current full text search', function (done) {
-            this.timeout(2000);
-            var path = 'fullextsearch.json';
-            var text_search = new text_search_light();
-            text_search.add('Peter');
-            text_search.add('Paul');
-            text_search.add('Maria');
-
-            text_search.save(path, function (error) {
-
-                if (error) {
-                    throw error;
-                }
-
-                // File exists now
-                assert(fs.existsSync(path) === true);
-
-                text_search_light.load(path, function (error, text_search2) {
-                    if (error) {
-                        throw error;
-                    }
-
-                    assert.deepEqual(text_search, text_search2);
-
-                    // Check functions
-                    assert.deepEqual(text_search.search('P'), ['Peter', 'Paul']);
-                    assert.deepEqual(text_search.search('P'), text_search2.search('P'));
-
-                    fs.unlinkSync(path);
-                    done();
-                });
-            });
-        });
-    });
 
 
     describe('init: create empty indexes', function () {
