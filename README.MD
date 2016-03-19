@@ -11,26 +11,26 @@ You can add every kind of data, also complex objects.
 ## Install
 ### From NPM
 ```sh
-npm install full-text-search-light
+npm install full-text-search-light-nofs
 ```
 
 ### From GitHub
 ```sh
-npm install git+https://github.com/frankred/node-full-text-search-light.git
+npm install git+https://github.com/evgenyzinoviev/node-full-text-search-light-nofs.git
 ```
 
 ## Documentation
 
 ### Init
 ```js
-var fulltextsearchlight = require('full-text-search-light');
+var fulltextsearchlight = require('full-text-search-light-nofs');
 var search = new fulltextsearchlight();
 ```
 
 You can also change some configuration values according to the full text search.
 
 ```js
-var fulltextsearchlight = require('full-text-search-light');
+var fulltextsearchlight = require('full-text-search-light-nofs');
 var search = new fulltextsearchlight({
   ignore_case: false,   // default = true, Ignore case during all search queries
   index_amount: 8;   // default = 12, The more indexes you have, the faster can be your search but the slower the 'add' method  gets
@@ -105,7 +105,7 @@ var result = search.search('pau');
 
 ### Save and Load
 ```js
-var fulltextsearchlight = require('full-text-search-light');
+var fulltextsearchlight = require('full-text-search-light-nofs');
 var search = new fulltextsearchlight();
 
 // Add
@@ -123,7 +123,7 @@ search.save('search.json', function(error){
 
 ### Save and Load (Sync)
 ```js
-var fulltextsearchlight = require('full-text-search-light');
+var fulltextsearchlight = require('full-text-search-light-nofs');
 var search = new fulltextsearchlight();
 
 // Add
